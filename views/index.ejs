@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+
+    <% if (condition) { %>
+      <h1>Verdadeiro</h1>
+    <% } %>
+
+    <ul>
+
+      <% for( nome of nomes ) { %>
+        <li> <%= nome %> </li>  
+      <% } %>
+    </ul>
+
+  </body>
+</html>
