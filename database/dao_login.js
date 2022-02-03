@@ -12,11 +12,11 @@ const connection = mysql.createConnection({
 module.exports = {
 
     findById: function (id){
-        return connection.promise().query('select * from users where id=?', [id])
+        return connection.promise().query('select * from usuarios where id=?', [id])
     },
 
     findByUsername: function (username){
-        return connection.promise().query('select * from users where login=?', [username])
+        return connection.promise().query('select * from usuarios where login=?', [username])
     }
 
 }

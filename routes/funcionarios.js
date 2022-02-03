@@ -1,32 +1,31 @@
 var express = require('express');
 const req = require('express/lib/request');
 const { redirect } = require('express/lib/response');
-
 var router = express.Router();
 var dao = require('../database/dao');
 
-router.get('/', function(request, response, next){
+router.get('/', function(request, response){
     dao.list().then(([rows]) => {
-        response.render('alunos/list',{ alunos: rows})
+        response.render('funcionarios/list',{ funcionarios: rows})
     }).catch(err => {
         console.log(err)
-        response.render('alunos/list', { alunos: [] })
+        response.render('funcionarios/list', { funcionarios: [] })
     });
-})
+});
 
 router.post('/delete', function(request, response){ 
     dao.remove(request.body.id)
     .then(([result]) => {
         console.log(result)
         if (result.affectedRows > 0)
-            request.flash('success', 'Aluno excluído com sucesso.')
+            request.flash('success', 'Funcionário excluído com sucesso.')
         else
-            request.flash('success', `Não foi encontrado no banco de dados o aluno com id = ${request.body.id}`)
-        response.redirect('/alunos')
+            request.flash('success', `Não foi encontrado no banco de dados o funcionário com id = ${request.body.id}`)
+        response.redirect('/funcionarios')
     }).catch(err => {
         console.log(err)
-        request.flash('error', 'Ocorreu um erro na exclusão do aluno.')
-        response.redirect('/alunos')
+        request.flash('error', 'Ocorreu um erro na exclusão do funcionário.')
+        response.redirect('/funcionarios')
     })
 });
 
@@ -45,43 +44,47 @@ router.get('/form', async function(request, response){
         console.log(row)
     }
     
-    response.render('alunos/form', {aluno: row})
+    response.render('funcionarios/form', {funcionario: row})
 });
 
 router.post('/save', function(request, response) {
 
     if (request.body.id){
         operacao = dao.update
-        success = `Dados do aluno atualizados com sucesso.`
+        success = `Dados do funcionário atualizados com sucesso.`
     }else{
         operacao = dao.save
-        success = `Aluno cadastrado com sucesso.`
+        success = `Funcionário cadastrado com sucesso.`
     }
 
     operacao(request.body)
     .then(([result]) => {
         request.flash('success', success)
-        response.redirect('/alunos')
+        response.redirect('/funcionarios')
     }).catch(err => {
         console.log(err)
-        request.flash('error', `Não foi possível cadastrar o aluno.`)
-        response.redirect('/alunos')
+        request.flash('error', `Não foi possível cadastrar o funcionário.`)
+        response.redirect('/funcionarios')
     })
 });
+
+router.post('/cancel', function(request, response) {
+    response.redirect('/funcionarios');
+  });
 
 router.get('/search', function(request, response){
 
 if (request.query.nome){
     dao.search(request.query.nome)
     .then(([rows]) => {
-        response.render('alunos/list', { alunos: rows})
+        response.render('funcionarios/list', { funcionarios: rows})
     }).catch( err =>{
         console.log(err)
         request.flash('error', 'Não foi possível efetuar a busca por nome.')
-        response.redirect('/alunos')
+        response.redirect('/funcionarios')
     })
 }else{
-    response.redirect('/alunos')
+    response.redirect('/funcionarios')
 }
 
 });

@@ -2,22 +2,16 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/style_index.css'/>
+    <a title = "logo" target="_self" ><img src="images/logo.png" width="300px" height="300px" style="margin-bottom: 20px;"/></a>
   </head>
-  <body>
+  <body class="container texto">
     <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <p><h3>Bem-vindo à <%= title %></h3></p>
+    <p><h3>O Futuro passa por aqui!</h3></p>
 
-    <% if (condition) { %>
-      <h1>Verdadeiro</h1>
-    <% } %>
-
-    <ul>
-
-      <% for( nome of nomes ) { %>
-        <li> <%= nome %> </li>  
-      <% } %>
-    </ul>
-
+    <form method="POST" action="/login">
+      <button type="submit" class="btn float-right login_btn" name="button">Login</button>
+    </form> 
   </body>
 </html>

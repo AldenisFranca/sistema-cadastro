@@ -1,8 +1,5 @@
-
-
 module.exports = function(passport){
     const bcrypt = require('bcryptjs');
-    const operations = require('../database/dao');
     const LocalStrategy = require('passport-local').Strategy
     const dao_login = require('../database/dao_login');
     

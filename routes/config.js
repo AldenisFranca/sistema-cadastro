@@ -2,7 +2,7 @@
 module.exports = function(app){
 
     var indexRouter = require('./index');
-    var alunosRouter = require('./alunos');
+    var funcionariosRouter = require('./funcionarios');
     var loginRouter = require('./login');
 
     let middlewareAutorization = function (req, resp, next){
@@ -11,7 +11,7 @@ module.exports = function(app){
     }
 
     app.use('/', indexRouter);
-    app.use('/alunos', middlewareAutorization ,alunosRouter);
+    app.use('/funcionarios', middlewareAutorization, funcionariosRouter);
     app.use('/login', loginRouter);
 
 }

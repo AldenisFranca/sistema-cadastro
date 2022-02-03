@@ -1,0 +1,14 @@
+html, body{
+    margin: 0;
+    height: 100%;
+    background-image: url(../images/pc.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.container{
+height: 100%;
+align-content: center;
+}

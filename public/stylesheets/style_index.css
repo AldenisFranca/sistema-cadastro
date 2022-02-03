@@ -1,0 +1,38 @@
+html, body{
+    margin: 0;
+    height: 100%;
+    background-image: url(../images/nasa.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.texto{
+  width: 400px;
+  margin: 0 auto;
+  padding: 0 10px 20px 10px;
+  color: #fff;
+  font-size: 18px;
+  text-align: center;
+}
+
+.container{
+color: white;
+height: 100%;
+align-content: center;
+}
+
+.login_btn{
+margin-top: 20px;
+font-size: larger;
+color: black;
+background-color:greenyellow;
+height: 50px;
+width: 200px;
+}
+
+.login_btn:hover{
+color: black;
+background-color: green;
+}
